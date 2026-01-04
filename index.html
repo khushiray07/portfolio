@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Khushi Ray • AIML Student & Developer</title>
+  <meta name="description"
+    content="Khushi Ray – AIML Student portfolio showcasing projects, skills, and contact information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* New theme inspired by the uploaded image */
+      --bg: #FFFBEF;
+      /* Light cream background */
+      --text: #1E293B;
+      /* Dark Navy text */
+      --primary: #2563EB;
+      /* A contrasting blue for accents */
+      --muted: #64748B;
+      --surface: #FFFFFF;
+      --border: #E2E8F0;
+
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+
+      --radius: 8px;
+      --maxw: 1100px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    a:hover {
+      opacity: 0.8;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .navbar {
+      padding: 24px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--text);
+      z-index: 1001;
+      /* Ensure brand is above mobile nav */
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: var(--primary);
+      transition: width 200ms ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger Menu */
+    .hamburger-btn {
+      display: none;
+      /* Hidden by default */
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+
+    .hamburger-btn svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--text);
+    }
+
+    .close-btn {
+      display: none;
+      /* Hide by default on all screen sizes */
+      position: absolute;
+      top: 28px;
+      right: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .close-btn svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      margin: 0 0 16px;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      margin: 0 auto 48px auto;
+      color: var(--muted);
+      max-width: 600px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      animation: fadeInUp 800ms cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+    }
+
+    .reveal-1 {
+      animation-delay: 100ms;
+    }
+
+    .reveal-2 {
+      animation-delay: 200ms;
+    }
+
+    .reveal-3 {
+      animation-delay: 300ms;
+    }
+
+    .reveal-4 {
+      animation-delay: 400ms;
+    }
+
+    /* Hero Section */
+    #home {
+      padding-top: 40px;
+      padding-bottom: 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text {
+      text-align: center;
+    }
+
+    .hero-text .greeting {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(40px, 8vw, 72px);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .hero-text h1 span {
+      color: var(--primary);
+    }
+
+    .hero-text .tagline {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--muted);
+      margin: 16px 0 32px;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      width: clamp(250px, 60vw, 350px);
+      height: clamp(250px, 60vw, 350px);
+      justify-self: center;
+    }
+
+    .profile-pic-container {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--text);
+    }
+
+    .profile-pic-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Decorative Accents */
+    .hero-image-wrapper::before,
+    .hero-image-wrapper::after {
+      content: '';
+      position: absolute;
+      font-family: monospace;
+      font-weight: bold;
+      color: var(--text);
+      z-index: -1;
+    }
+
+    .hero-image-wrapper::before {
+      content: '++\A++';
+      white-space: pre;
+      font-size: 24px;
+      line-height: 1;
+      top: -10px;
+      right: -10px;
+      transform: rotate(15deg);
+    }
+
+    .hero-image-wrapper::after {
+      content: '////';
+      font-size: 24px;
+      bottom: 10px;
+      left: -20px;
+      transform: rotate(-15deg);
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--bg);
+      color: var(--text);
+      padding: 12px 28px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: all 160ms ease;
+      border: 2px solid var(--text);
+    }
+
+    .cta:hover {
+      background: var(--text);
+      color: var(--bg);
+      transform: translateY(-2px);
+    }
+
+    /* About Section */
+    .highlight-section {
+      background: #F8F4E8;
+      /* Slightly different cream for highlighted sections */
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .about-content p {
+      margin: 0;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .skill-category {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+    }
+
+    .skill-category h3 {
+      margin: 0 0 16px;
+      font-size: 20px;
+    }
+
+    .skill-category ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .skill-category li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .skill-category li svg {
+      color: var(--primary);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .project-image img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-info h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .project-info p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .link-disabled {
+      color: var(--muted);
+      font-weight: 500;
+      cursor: not-allowed;
+    }
+
+    /* Contact Section */
+    .contact-box {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      background: var(--surface);
+      padding: 48px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Footer */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-socials a {
+      color: var(--muted);
+    }
+
+    .footer-socials a:hover {
+      color: var(--primary);
+    }
+
+    .footer-socials svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer-copyright {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(145deg, #ff416c, #ff4b2b);
+      /* Red flame gradient */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 75, 43, 0.4);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    }
+
+    .scroll-to-top.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-to-top:hover {
+      box-shadow: 0 6px 16px rgba(255, 75, 43, 0.6);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        text-align: left;
+      }
+
+      .hero-text {
+        text-align: left;
+      }
+
+      .hero-text .tagline,
+      .hero-text .greeting {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+      }
+
+      .nav-links.is-open {
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        font-size: 24px;
+      }
+
+      .hamburger-btn {
+        display: block;
+      }
+
+      .nav-links .close-btn {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .project-card {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .cta,
+      .project-card,
+      .scroll-to-top {
+        transition: none;
+      }
+
+      .reveal {
+        animation: none;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">Portfolio by <span style="color: #2563EB;">Khushi</span></a>
+      <nav class="nav-links" id="nav-menu" role="navigation">
+        <button class="close-btn" id="close-btn" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text reveal-1">
+            <p class="greeting">Hello, I'm Khushi Ray.</p>
+            <h1>AIML Student &amp; <span> Aspiring Software Engineer</span></h1>
+            <p class="tagline">Creative problem solver and frontend enthusiast with a love for AI/ML challenges.</p>
+            <a class="cta" href="#projects">View My Work</a>
+          </div>
+          <div class="hero-image-wrapper reveal-2">
+            <div class="profile-pic-container">
+              <img src="assets/khushi.png" alt="Portrait of Khushi Ray">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="highlight-section">
+      <div class="container reveal-1">
+        <h2 class="section-title" style="text-align: center;">About Me</h2>
+        <div class="about-content">
+          <p>
+            I am a passionate third-year student pursuing a Bachelor's in Artificial Intelligence and Machine Learning
+            at AMC Engineering College. I have a strong foundation in programming and data structures, and I'm currently
+            diving deep into the world of frontend development with React and Next.js. I love building things for the
+            web and am always excited to take on new challenges that blend my creativity with my technical skills.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center;">My Skills</h2>
+        <p class="section-intro">My technical toolbox, from programming fundamentals to modern frontend frameworks.</p>
+        <div class="skills-grid">
+          <div class="skill-category reveal-1">
+            <h3>Languages & DSA</h3>
+            <ul>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>Python</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>JavaScript</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>Data Structures & Algorithms</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>Competitive Programming</li>
+            </ul>
+          </div>
+          <div class="skill-category reveal-2">
+            <h3>Frontend Development</h3>
+            <ul>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>React</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>Next.js (Learning)</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>Tailwind CSS</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>HTML5 & CSS3</li>
+            </ul>
+          </div>
+          <div class="skill-category reveal-3">
+            <h3>Tools & Interests</h3>
+            <ul>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>Git & GitHub</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>Figma</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>AI/ML Concepts</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>Problem Solving</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+
+    <section id="projects" class="highlight-section">
+      <div class="container">
+        <h2 class="section-title" style="text-align: center;">My Projects</h2>
+        <p class="section-intro">Selected projects that showcase my skills in web development and my passion for AI.</p>
+        <div class="projects-grid">
+          <article class="project-card reveal-1">
+            <div class="project-image">
+              <img src="assets/REC.png" alt="Automated Sports Data Analyser project concept" />
+            </div>
+            <div class="project-info">
+              <h3>SmartRecco - AI-Powered Recommendation Engine</h3>
+              <p>SmartRecco is a full-stack web application that provides personalized recommendations using AI. It
+                features a modern, responsive frontend built with Next.js and a robust backend powered by Django.</p>
+              <div class="project-tags">
+                <span class="tag">NextJS</span>
+                <span class="tag">Tailwind CSS</span>
+                <span class="tag">Django Rest Framework</span>
+                <span class="tag">JWT Authentication </span>
+              </div>
+              <a href=" https://github.com/khushiray07/smartrecco" target="_blank" rel="noopener">View Project
+                &rarr;</a>
+            </div>
+          </article>
+
+
+
+          <article class="project-card reveal-2">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=1470&auto=format&fit=crop"
+                alt="Weather App project screenshot" />
+            </div>
+            <div class="project-info">
+              <h3>Real-Time Weather App</h3>
+              <p>A clean and simple weather application that provides real-time weather data for any city. Built with
+                vanilla JavaScript and the OpenWeatherMap API.</p>
+              <div class="project-tags">
+                <span class="tag">Vanilla JS</span>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">Weather API</span>
+              </div>
+              <a href="https://github.com/khushiray07/weather_app" target="_blank" rel="noopener">View Project
+                &rarr;</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal-3">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?q=80&w=1476&auto=format&fit=crop"
+                alt="Amazon Clone project concept" />
+            </div>
+            <div class="project-info">
+              <h3>Amazon Clone</h3>
+              <p>A front-end clone of the Amazon homepage, focusing on replicating the layout and styling with core web
+                technologies. A great exercise in complex CSS and HTML structure.</p>
+              <div class="project-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <a href="https://github.com/khushiray07/amazon-clone" target="_blank" rel="noopener">View Project
+                &rarr;</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal-4">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1695731050883-b8e33d5476f2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Titanic ML project concept" />
+            </div>
+            <div class="project-info">
+              <h3>Titanic Survival Prediction</h3>
+              <p>Predicted passenger survival on the Titanic using ML models like Logistic Regression and Random Forest,
+                achieving ~82.68% accuracy on the Kaggle dataset.</p>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Scikit-Learn</span>
+                <span class="tag">ML</span>
+              </div>
+              <a href="https://github.com/khushiray07/titanic-ml-project" target="_blank" rel="noopener">View Project
+                &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container reveal-1">
+        <div class="contact-box">
+          <h2 class="section-title">Get in Touch</h2>
+          <p style="color: var(--muted); margin-bottom: 24px;">I'm always open to new opportunities and collaborations.
+            Have a project in mind or just want to connect? My inbox is always open!</p>
+          <a href="mailto:khushiray972@gmail.com" class="cta">Say Hello</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-socials">
+        <a href="https://github.com/khushiray07" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ray-khushi/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copyright">© 2025 Khushi Ray • Designed with efforts & a cup of coffee ☕</p>
+    </div>
+  </footer>
+
+  <button id="scrollToTopBtn" class="scroll-to-top" title="Go to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script>
+    const navMenu = document.getElementById('nav-menu');
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const navLinks = navMenu.querySelectorAll('a');
+
+    // Open navigation
+    hamburgerBtn.addEventListener('click', () => {
+      navMenu.classList.add('is-open');
+      hamburgerBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      hamburgerBtn.style.display = 'none'; // Hide hamburger icon
+    });
+
+    // Function to close navigation
+    const closeNav = () => {
+      navMenu.classList.remove('is-open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      hamburgerBtn.style.display = 'block'; // Show hamburger icon
+    };
+
+    closeBtn.addEventListener('click', closeNav);
+
+    // Close navigation when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', closeNav);
+    });
+
+    // Scroll to Top Button Logic
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        scrollToTopBtn.classList.add('is-visible');
+      } else {
+        scrollToTopBtn.classList.remove('is-visible');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+
+</html>
